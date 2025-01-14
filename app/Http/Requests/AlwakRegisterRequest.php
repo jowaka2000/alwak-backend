@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AlwakAuthRequest extends FormRequest
+class AlwakRegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,10 @@ class AlwakAuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username'=>'required|exist:users,username',
-            'password'=>'required',
+            'name' => 'required|min:4',
+            'username' => 'required|unique:users,username|min:6',
+            'password' => 'required',
+            'isEmailField'=>'required',
         ];
     }
 }

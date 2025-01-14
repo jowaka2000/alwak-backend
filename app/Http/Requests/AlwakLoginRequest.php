@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SawaStaffRegisterRequest extends FormRequest
+class AlwakLoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,17 @@ class SawaStaffRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'username' => 'required|unique:users,username',
+            'username' => 'required|exists:users,username',
             'password' => 'required',
-            'isEmailField'=>'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'username.exists' => 'The username does not exist in our database. Try creating an account with link below or use valid username.',
+            'username.required' => 'Please enter your username you used when creating an account.',
+            'password.required' => 'Please enter your password',
         ];
     }
 }

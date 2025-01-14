@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->string('service');
             $table->string('employer-location');
             $table->string('job-schedule-date')->nullable();
-            $table->string('preferred-day-for-cleaning')->nullable();//mon,tue,wed,thu
             $table->string('preferred-time-for-cleaning')->nullable();
             $table->boolean('is-job-date-schedule-flexible')->default(false);
             $table->string('age')->nullable();
